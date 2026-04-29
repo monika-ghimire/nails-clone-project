@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 type Step3Props = {
   couponCode: string;
   copied: boolean;
@@ -7,6 +9,8 @@ type Step3Props = {
 };
 
 export default function Step3({ couponCode, copied, onCopy }: Step3Props) {
+  const router = useRouter();
+
   return (
     <>
       <div className="space-y-4">
@@ -41,6 +45,16 @@ export default function Step3({ couponCode, copied, onCopy }: Step3Props) {
         <p className="text-sm text-slate-500">
           Use this code at checkout to apply your 15% discount.
         </p>
+      </div>
+
+      <div className="mt-8 flex justify-center">
+        <button
+          type="button"
+          onClick={() => router.push("/")}
+          className="inline-flex items-center justify-center rounded-2xl bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
+        >
+          Go to Home
+        </button>
       </div>
     </>
   );
