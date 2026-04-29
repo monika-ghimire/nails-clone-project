@@ -77,7 +77,7 @@ export default function ProductCard({
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
+    <div className="bg-white rounded-xl shadow-xl  border border-slate-200 overflow-hidden hover:shadow-md transition-shadow duration-200">
       {/* Image */}
       <div className="aspect-square bg-linear-to-br from-sky-100 to-sky-200 flex items-center justify-center relative">
         {product.discount && (

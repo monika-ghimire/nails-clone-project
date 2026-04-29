@@ -32,7 +32,7 @@ export default function CartSidebar({
       {/* Overlay */}
       <div
         onClick={onClose}
-        className={`fixed inset-0 bg-black/5 backdrop-blur-xs z-40 transition-opacity duration-300 ${
+        className={`fixed inset-0 bg-black/40  z-40 transition-opacity duration-300 ${
           open ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       />
@@ -60,7 +60,7 @@ export default function CartSidebar({
           {cartItems.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-gray-400">
               <span className="material-icons text-6xl mb-3">
-                shopping_cart
+                shopping cart
               </span>
               <p className="text-sm">Your cart is empty</p>
             </div>

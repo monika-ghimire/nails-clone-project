@@ -199,7 +199,7 @@ export default function Home() {
 
           <div className="grid lg:grid-cols-[280px_1fr] gap-6">
             {/* FILTERS */}
-            <aside className="bg-white p-6 rounded-2xl border">
+            <aside className="bg-white p-6 flex lg:flex-col shadow-xl  justify-between lg:justify-items-normal! lg:h-[600px] rounded-2xl border-gray-800">
               <h2 className="font-semibold mb-4">Filters</h2>
 
               {/* LENGTH */}
@@ -220,7 +220,7 @@ export default function Home() {
               </div>
 
               {/* SHAPE */}
-              <div className="mt-4">
+              <div className="lg:mt-4">
                 <h3 className="text-sm font-semibold mb-2">Shape</h3>
                 {uniqueShapes.map((s) => (
                   <label key={s} className="block text-sm">
@@ -237,7 +237,7 @@ export default function Home() {
               </div>
 
               {/* COLOR */}
-              <div className="mt-4">
+              <div className="lf:mt-4">
                 <h3 className="text-sm font-semibold mb-2">Color</h3>
                 {uniqueColors.map((c) => (
                   <label key={c} className="block text-sm">
