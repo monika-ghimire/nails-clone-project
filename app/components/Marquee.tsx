@@ -13,8 +13,8 @@ export default function Marquee() {
     <div className="relative w-full overflow-hidden bg-slate-900 text-white py-3">
       
       {/* fade edges */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-slate-900 to-transparent z-10" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-slate-900 to-transparent z-10" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-slate-900 to-transparent " />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-slate-900 to-transparent " />
 
       <div className="flex whitespace-nowrap animate-marquee">
         {[...items, ...items].map((item, index) => (

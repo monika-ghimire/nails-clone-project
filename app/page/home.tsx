@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import ProductCard from "../components/ProductCard";
 import Marquee from "../components/Marquee";
 import Features from "../components/Features";
+import CartSidebar from "../components/Cart-drawer";
 
 export type Product = {
   id: number;
@@ -59,19 +60,19 @@ export default function Home() {
 
     if (selectedLengths.length) {
       next = next.filter((p) =>
-        p.lengths.some((l) => selectedLengths.includes(l))
+        p.lengths.some((l) => selectedLengths.includes(l)),
       );
     }
 
     if (selectedShapes.length) {
       next = next.filter((p) =>
-        p.shapes.some((s) => selectedShapes.includes(s))
+        p.shapes.some((s) => selectedShapes.includes(s)),
       );
     }
 
     if (selectedColors.length) {
       next = next.filter((p) =>
-        p.colors.some((c) => selectedColors.includes(c))
+        p.colors.some((c) => selectedColors.includes(c)),
       );
     }
 
@@ -106,7 +107,7 @@ export default function Home() {
   const toggleFilter = (
     selected: string[],
     value: string,
-    setter: (v: string[]) => void
+    setter: (v: string[]) => void,
   ) => {
     updateFilters(() => {
       if (selected.includes(value)) {
@@ -123,11 +124,24 @@ export default function Home() {
       const exist = prev.find((p) => p.id === product.id);
       if (exist) {
         return prev.map((p) =>
-          p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p
+          p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p,
         );
       }
       return [...prev, { ...product, quantity: 1 }];
     });
+    setCartOpen(true);
+  };
+
+  const handleUpdateCartQuantity = (productId: number, delta: number) => {
+    setCart((prev) =>
+      prev
+        .map((item) =>
+          item.id === productId
+            ? { ...item, quantity: item.quantity + delta }
+            : item,
+        )
+        .filter((item) => item.quantity > 0),
+    );
   };
 
   // LIKE
@@ -144,7 +158,7 @@ export default function Home() {
 
   const paginatedProducts = filteredProducts.slice(
     (currentPage - 1) * productsPerPage,
-    currentPage * productsPerPage
+    currentPage * productsPerPage,
   );
 
   const cartCount = cart.reduce((a, b) => a + b.quantity, 0);
@@ -153,6 +167,11 @@ export default function Home() {
   const uniqueShapes = [...new Set(products.flatMap((p) => p.shapes))];
   const uniqueColors = [...new Set(products.flatMap((p) => p.colors))];
 
+  const cartIds = useMemo(() => new Set(cart.map((c) => c.id)), [cart]);
+
+  const handleRemoveFromCart = (id: number) => {
+    setCart((prev) => prev.filter((item) => item.id !== id));
+  };
   return (
     <div className="min-h-screen bg-slate-50">
       <Navbar
@@ -176,9 +195,7 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto px-4 py-8">
           <h1 className="text-3xl font-bold mb-2">Welcome</h1>
-          <p className="text-slate-600 mb-6">
-            Premium nail care products
-          </p>
+          <p className="text-slate-600 mb-6">Premium nail care products</p>
 
           <div className="grid lg:grid-cols-[280px_1fr] gap-6">
             {/* FILTERS */}
@@ -246,6 +263,10 @@ export default function Home() {
                     product={product}
                     onAddToCart={handleAddToCart}
                     onToggleLike={handleToggleLike}
+                    onOpenCart={() => setCartOpen(true)}
+                    isInCart={
+                      cart.find((item) => item.id === product.id) !== undefined
+                    }
                     isLiked={likedProducts.has(product.id)}
                   />
                 ))}
@@ -260,6 +281,13 @@ export default function Home() {
           </div>
         </div>
       </main>
+
+      <CartSidebar
+        open={cartOpen}
+        onClose={() => setCartOpen(false)}
+        cartItems={cart}
+         onRemove={handleRemoveFromCart}
+      />
 
       <Footer />
     </div>
