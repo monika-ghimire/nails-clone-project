@@ -28,25 +28,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-slate-300 hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#" className="text-slate-300 hover:text-white transition-colors">Products</a></li>
-              <li><a href="#" className="text-slate-300 hover:text-white transition-colors">Services</a></li>
-              <li><a href="#" className="text-slate-300 hover:text-white transition-colors">Contact</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Customer Service</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-slate-300 hover:text-white transition-colors">FAQ</a></li>
-              <li><a href="#" className="text-slate-300 hover:text-white transition-colors">Shipping Info</a></li>
-              <li><a href="#" className="text-slate-300 hover:text-white transition-colors">Returns</a></li>
-              <li><a href="#" className="text-slate-300 hover:text-white transition-colors">Support</a></li>
-            </ul>
-          </div>
+         
         </div>
 
         <div className="border-t border-slate-700 mt-8 pt-8 text-center">
