@@ -17,7 +17,7 @@ export default function Step3({ couponCode, copied, onCopy }: Step3Props) {
         <h1 className="text-4xl font-semibold tracking-tight text-slate-900">
           Welcome to the club!
         </h1>
-        <p className="text-slate-600">We've been expecting you. 💌</p>
+       <p className="text-slate-600">We&apos;ve been expecting you. 💌</p>
         <p className="text-slate-700">
           Use the coupon code below to get 15% off your first order.
         </p>

@@ -1,20 +1,6 @@
 "use client";
+import type { Product } from "../page/home";
 
-type Product = {
-  id: number;
-  name: string;
-  price: number;
-  originalPrice: number | null;
-  rating: number;
-  reviews: number;
-  description: string;
-  category: string;
-  discount: number | null;
-  lengths?: string[];
-  shapes?: string[];
-  colors?: string[];
-  options?: string[];
-};
 
 type ProductCardProps = {
   product: Product;
